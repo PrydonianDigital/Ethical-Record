@@ -1,0 +1,46 @@
+@font-face { 
+	font-family: 'Clarendon'; 
+	src: url('fonts/clarebtbol-webfont.eot'); 
+	src: url('fonts/clarebtbol-webfont.eot?#iefix') format('embedded-opentype'), 
+		url('fonts/clarebtbol-webfont.woff') format('woff'), 
+		url('fonts/clarebtbol-webfont.ttf') format('truetype'), 
+		url('fonts/clarebtbol-webfont.svg#ClarendonRegular') format('svg'); 
+	font-weight: bold; 
+	font-style: normal; 
+} 
+@font-face { 
+	font-family: 'Clarendon'; 
+	src: url('fonts/clarebtlig-webfont.eot'); 
+	src: url('fonts/clarebtlig-webfont.eot?#iefix') format('embedded-opentype'), 
+		url('fonts/clarebtlig-webfont.woff') format('woff'), 
+		url('fonts/clarebtlig-webfont.ttf') format('truetype'), 
+		url('fonts/clarebtlig-webfont.svg#') format('svg'); 
+	font-weight: normal; 
+	font-style: normal;
+}
+html .mceContentBody, textarea, input {    
+	padding: 10px;  
+	font-family: "Clarendon", Georgia, Times, serif; 
+	line-height: 1.4em;
+	font-size: 1rem;
+	font-weight: 400;
+} 
+h1, h2, h3, h4, h5, h6, * {
+	font-family: "Clarendon", Georgia, Times, serif !important;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Clarendon", Georgia,​ Times, ​serif;
+	font-weight: 700;
+	padding-top: 0;
+	margin-top: 0;
+}
+p {
+	font-family: "Clarendon", Georgia, Times, serif; 
+	line-height: 1.4em;
+}
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+	color: #136972;
+}
+a:hover, h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
+	color: #0B3539;
+}

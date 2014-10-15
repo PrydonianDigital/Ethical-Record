@@ -1,0 +1,552 @@
+/*  
+Theme Name: Ethical Record
+Theme URI: ethicalrecord.org.uk
+Description: Website for Conway Hall's Ethical Record Newsletter
+Version: 1.0
+Author: Mark Duwe
+Author URI: https://www.facebook.com/Marks.Portfolio
+Tags: columns, css3
+License: Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License
+License URI: http://creativecommons.org/licenses/by-nc-nd/3.0/deed.en_US
+*/
+@font-face { 
+	font-family: 'Clarendon'; 
+	src: url('fonts/clarebtbol-webfont.eot'); 
+	src: url('fonts/clarebtbol-webfont.eot?#iefix') format('embedded-opentype'), 
+		url('fonts/clarebtbol-webfont.woff') format('woff'), 
+		url('fonts/clarebtbol-webfont.ttf') format('truetype'), 
+		url('fonts/clarebtbol-webfont.svg#ClarendonRegular') format('svg'); 
+	font-weight: bold; 
+	font-style: normal; 
+} 
+@font-face { 
+	font-family: 'Clarendonlig'; 
+	src: url('fonts/clarebtlig-webfont.eot'); 
+	src: url('fonts/clarebtlig-webfont.eot?#iefix') format('embedded-opentype'), 
+		url('fonts/clarebtlig-webfont.woff') format('woff'), 
+		url('fonts/clarebtlig-webfont.ttf') format('truetype'), 
+		url('fonts/clarebtlig-webfont.svg#') format('svg'); 
+	font-weight: normal; 
+	font-style: normal;
+}
+html, body { 
+	margin: 0; 
+	padding: 0; 
+	height: 100%; 
+} 
+body { 
+	color: #000; 
+	background: #FFF; 
+	font-family: Georgia, Times, serif; 
+	text-shadow: 0 0 0 rgba(0,0,0,0) !important;
+} 
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Clarendon", Georgia,​ Times, ​serif;
+	font-weight: 700;
+	padding-top: 0;
+	margin-top: 0;
+}
+p {
+	font-family: "Clarendonlig", Georgia, Times, serif; 
+	line-height: 1.4em;
+}
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+	color: #136972;
+}
+a:hover, h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
+	color: #0B3539;
+}
+.navbar {
+	font-family: "Clarendon", Georgia,​ Times, ​serif;
+	font-weight: 700;
+	line-height: 26px;
+	min-height: 26px;
+	text-shadow: 0 0 0 rgba(0,0,0,0);
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+#nav1 {
+	margin-bottom: 0;
+}
+.navbar ul li {
+	line-height: 29px;
+	height: 29px;
+}
+.navbar ul li > a {
+	line-height: 26px;
+	height: 26px;
+	padding: 0 5px;
+}
+.navbar ul li > a:after {
+	content: " |";
+}
+.gumby-no-touch .navbar ul li:hover > a, li.gumby-touch .navbar ul li.active > a {
+	background: #136972;
+	color: #0E4C52; 
+}
+.navbar ul li.current-menu-item a, .navbar ul li.current-post-parent a, .single-issue .menu-item-220 a, #menu-item-1135 a {
+	color: #000000; 
+}
+.header {
+	width: 100%;
+	padding: 0;
+	clear: both;
+	background: #ffffff;
+}
+.sticky {
+	background: #EBF3F4;
+	padding: 10px;
+}
+.thumb {
+	padding: 0;
+}
+.side .row, .widget {
+	margin-bottom: 20px;
+}
+.input.narrow, .input.narrow {
+    margin: 0;
+    width: 57.6667%;
+}
+.article {
+	margin-bottom: 20px;
+	border-bottom: 1px solid #c6e1e3;
+}
+.references {
+	background: #EBEBEB;
+	padding: 10px;
+}
+.references h5 {
+	margin: -10px -10px 0 -10px;
+	background: #136972;
+	color: #fff;
+	padding: 0 10px;
+}
+.sidebar {
+	background: #EBF3F4;
+	padding: 10px;
+}
+.widget {
+	padding: 0 10px 10px 10px;
+	background: #EBEBEB;
+}
+.sidebar h2, .widget h4, .widget h5 {
+	padding-top: 0;
+}
+#search .btn.medium a {
+    padding: 0 9px;
+}
+.widget h5, .widget h3.sd-title {
+	background: #136972;
+	color: #fff;
+	padding: 0 10px;
+	margin: 0 -10px 10px -10px;
+	border: 0;
+}
+.widget #search h5 {
+	background: #136972;
+	color: #fff;
+	padding: 0 10px;
+	margin: 0 -20px 10px -20px;
+}
+#options {
+	display: none;
+}
+article.video {
+	height: 200px;
+}
+#search label {
+    cursor: pointer;
+    display: block;
+    font-size: 0.8rem;
+    line-height: 1.1;
+    margin-bottom: 5px;
+}
+.screen-reader-text {
+	display: none;
+}
+.sidebar p {
+	font-size: 0.8rem;
+	line-height: 1.2em;
+	font-weight: 300;
+}
+
+/* Post Like System */
+a.jm-post-like {
+	font-weight: normal;
+	display: inline-block;
+	width: auto;
+	font-size: 13px;
+	font-size: 0.928571429rem;
+	line-height: 1.846153846;
+	-moz-transition: all 0.3s ease-out 0.2s;
+	-webkit-transition: all 0.3s ease-out 0.2s;
+	-o-transition: all 0.3s ease-out 0.2s;
+}
+a.jm-post-like.liked {
+	color: #da1b1b;
+}
+a.jm-post-like:hover,
+a.jm-post-like:active,
+a.jm-post-like:focus,
+a.liked:hover,
+a.liked:active,
+a.liked:focus { /* default on hover */
+	color: #000;
+}
+.textalignleft {
+	text-align: left;
+}
+.textalignright {
+	text-align: right;
+}
+.alignleft {
+	float: left;
+	margin: 0 12px 0 0;
+}
+.alignright {
+	float: right;
+	margin: 0 0 0 12px;
+}
+.alignnone {
+	float: none;
+}
+.aligncenter {
+	margin: 0 auto;
+}
+.widget p, .wp-caption-text {
+	line-height: 1.2;
+}
+.wp-caption-text {
+	background: #ebebeb;
+	padding: 5px;
+	font-size: 12px;
+	text-align: center;
+}
+.widget p {
+	margin-bottom: 7px;
+}
+.widget .menu {
+	margin: 0;
+	padding: 0;
+	font-family: "Clarendonlig", Georgia,​ Times, ​serif;
+	font-weight: 700;
+}
+.widget .menu .current-menu-item a, .widget .menu .current-menu-parent a {
+	color: #000;
+}
+.sd-block {
+	display: block;
+	overflow: hidden;
+}
+div.jetpack-likes-widget-wrapper {
+    height: auto !important;
+    position: relative;
+    width: 100%;
+}
+.widget div.jetpack-likes-widget-wrapper, .widget .sharedaddy {
+    display: none !important;
+}
+#cookie {
+	position: fixed;
+	bottom: 0;
+	margin: 0;
+	width: 100%;
+	z-index: 11000;
+	text-align: center;
+}
+.kindleWidget {
+	margin-bottom: 10px;
+}
+.share-kindle span {
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding-left: 20px;
+}
+.size-auto, 
+.size-full,
+.size-large,
+.size-medium,
+.size-thumbnail {
+	max-width: 100%;
+	height: auto;
+}
+.home .category-videos iframe {
+	width: 340px !important;
+	height: 255px !important;
+}
+#nav2 {
+	display: none;
+}
+.search .type-speaker .row, .post-type-archive-speaker .type-speaker .row {
+	background: #EBF3F4;
+}
+.search .type-speaker .columns, .post-type-archive-speaker .type-speaker .columns {
+	padding: 10px;
+}
+.search-results h6, .search-results p {
+	font-size: 0.8rem;
+	margin: 0 0 2px 0;
+}
+.taxonomies {
+	margin: 0;
+	padding: 0;
+	font-size: 40px;
+	text-align: center;
+}
+.taxonomies li {
+	padding: 10px 0;
+	border-bottom: 1px dotted #000;
+	line-height: 1;
+}
+.cat-item-59 a {
+	color: #6f002b;
+	font-family: "Clarendon", Georgia,​ Times, ​serif;
+	font-size: 90px;
+	font-weight: bold;
+}
+.cat-item-60 a {
+	color: #a77cb7;
+	font-style: italic;
+	font-family: "Perpetua", Georgia,​ Times, ​serif;
+	font-size: 50px;
+}
+.cat-item-61 a {
+	color: #d4a500;
+	font-family: "Perpetua", Georgia,​ Times, ​serif;
+	font-size: 42px;
+}
+.cat-item-63 a {
+	color: #00390d;
+	font-family: "Clarendon", Georgia,​ Times, ​serif;
+	font-size: 44px;
+	font-weight: bold;
+}
+.cat-item-64 a {
+	color: #007b87;
+	font-family: "Perpetua", Georgia,​ Times, ​serif;
+	font-size: 90px;
+}
+.cat-item-65 a {
+	color: #008ccc;
+	font-family: "Perpetua", Georgia,​ Times, ​serif;
+	font-size: 46px;
+	font-style: italic;
+}
+.cat-item-66 a {
+	color: #00386b;
+	font-family: "Clarendon", Georgia,​ Times, ​serif;
+	font-size: 84px;
+	font-weight: bold;
+}
+.cat-item-67 a {
+	color: #3f2151;
+	font-style: italic;
+	font-family: "Perpetua", Georgia,​ Times, ​serif;
+}
+.cat-item-68 a {
+	color: #007b87;
+	font-family: "Perpetua", Georgia,​ Times, ​serif;
+	text-transform: uppercase;
+	font-size: 64px;
+}
+.cat-item-69 a {
+	color: #ea6025;
+	font-family: "Perpetua", Georgia,​ Times, ​serif;
+	font-size: 66px;
+	font-style: italic;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.cat-item-99 a {
+	color: #d4a500;
+	font-family: "Perpetua", Georgia,​ Times, ​serif;
+	font-size: 76px;
+	letter-spacing: 2px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+h2.humanism {
+	color: #6f002b;
+	font-family: "Clarendon", Georgia,​ Times, ​serif;
+	font-weight: bold;
+}
+h2.atheism-secularism {
+	color: #a77cb7;
+	font-style: italic;
+	font-family: "Perpetua", Georgia,​ Times, ​serif;
+}
+h2.moral-philosophy-ethics {
+	color: #d4a500;
+	font-family: "Perpetua", Georgia,​ Times, ​serif;
+}
+h2.philosophy-of-science {
+	color: #00390d;
+	font-family: "Clarendon", Georgia,​ Times, ​serif;
+	font-weight: bold;
+}
+h2.rationalism {
+	color: #007b87;
+	font-family: "Perpetua", Georgia,​ Times, ​serif;
+}
+h2.the-politics-of-unbelief {
+	color: #008ccc;
+	font-family: "Perpetua", Georgia,​ Times, ​serif;
+	font-style: italic;
+}
+h2.philosophy {
+	color: #00386b;
+	font-family: "Clarendon", Georgia,​ Times, ​serif;
+	font-weight: bold;
+}
+h2.contemporary-ethical-issues {
+	color: #3f2151;
+	font-style: italic;
+	font-family: "Perpetua", Georgia,​ Times, ​serif;
+}
+h2.humanrights {
+	color: #007b87;
+	font-family: "Perpetua", Georgia,​ Times, ​serif;
+	text-transform: uppercase;
+}
+h2.free-speech {
+	color: #ea6025;
+	font-family: "Perpetua", Georgia,​ Times, ​serif;
+	font-style: italic;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+li.share-custom a.share-icon span {
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    display: inline-block;
+    height: 23px !important;
+    line-height: 23px !important;
+    margin-left: 0;
+    padding: 0 5px 0 19px;
+}
+.readoffline-shortcode {
+
+}
+.readoffline-shortcode div {
+	background: #F8F8F8;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+    color: #777777 !important;
+    display: inline-block;
+    font-family: "Open Sans",sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 23px;
+    margin: 0 5px 5px 0;
+    padding: 1px 8px 0 5px;
+    text-decoration: none !important;
+    text-shadow: none;
+	background-position: left center;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    display: inline-block;
+    height: 23px !important;
+    line-height: 23px !important;
+    margin-left: 0;
+    padding: 0 5px;
+}
+div.sharedaddy h3.sd-title:before, h3.sd-title:before {
+    border-top: none;
+    content: "";
+    display: block;
+    margin-bottom: 1em;
+    min-width: 30px;
+    width: 100%;
+}
+div.sharedaddy h3.sd-title, h3.sd-title {
+    display: inline-block;
+    font-size: 9pt;
+    font-weight: bold;
+    line-height: 1.2;
+    margin: 0 0 1em;
+}
+#comments {
+	
+}
+.comment {
+	border-bottom: 1px solid #c6e1e3;
+}
+.commentlist li {
+	margin-bottom: 10px;
+}
+.parent, .comment {
+	background: #EBEBEB;
+}
+.children {
+	margin-left: 20px;
+}
+.children .odd {
+	background: #fff;
+}
+.children .even {
+	background: #EBF3F4;
+}
+.comment-body {
+	padding: 10px;
+}
+.vcard {
+	overflow: hidden;
+	margin: -10px -10px 0 -10px;
+	background: #136972;
+	color: #fff;
+	padding: 0;
+	font-family: "Clarendonlig", Georgia,​ Times, ​serif;
+	font-weight: bold;
+	line-height: 32px;
+}
+.vcard img {
+	float: left;
+	width: 32px;
+	height: 32px;
+	margin: 0 10px 0 0;
+	vertical-align: middle;
+}
+.vcard bn {
+	font-family: "Clarendonlig", Georgia,​ Times, ​serif;
+	font-weight: bold;
+}
+.comment-reply-link {
+	font-size: 80%;
+}
+.comment-form-comment label {
+	display: block !important;
+}
+.archive-issue p {
+	font-size: 0.85rem;
+	line-height: 1.2;
+	margin-bottom: 10px;
+}
+.wp-pagenavi {
+	margin-bottom: 20px;
+}
+@media (max-width: 768px) {
+	#nav2 {
+		display: block;
+	}
+	.navbar {
+		min-height: 60px;
+		height: 60px;
+		line-height: 60px;
+	}
+	.taxonomies a {
+		font-size: 75% !important;
+	}
+}
+@media (max-width: 480px) {
+	#nav2 {
+		display: block;
+	}
+	.home .category-videos iframe {
+		width: 300px !important;
+		height: 215px !important;
+	}
+	.taxonomies a {
+		font-size: 75% !important;
+	}
+}
