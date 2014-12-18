@@ -233,6 +233,18 @@ a.liked:focus { /* default on hover */
 .widget .menu .current-menu-item a, .widget .menu .current-menu-parent a {
 	color: #000;
 }
+.widget_nav_menu li.menu-item-has-children .sub-menu {
+	display: none;
+}
+.widget_nav_menu li.menu-item-has-children.current_page_item .sub-menu, .widget_nav_menu li.menu-item-has-children.current_page_parent .sub-menu {
+	display: block;
+}
+.widget_nav_menu li.menu-item-has-children.current_page_item .sub-menu li a, .widget_nav_menu li.menu-item-has-children.current-menu-parent .sub-menu li a {
+	color: #136972;
+}
+.widget_nav_menu li.menu-item-has-children.current_page_item .sub-menu li a:hover, .widget_nav_menu li.menu-item-has-children.current-menu-parent .sub-menu li.current-menu-item a {
+	color: #000;
+}
 .sd-block {
 	display: block;
 	overflow: hidden;
