@@ -1116,3 +1116,14 @@ function rdc_add_views_colurdc_data( $colname ) {
 	echo '<strong>' . number_format( absint( $postviews[0]['views'] ) ) . '</strong>';
 }
 add_action( 'manage_posts_custom_column', 'rdc_add_views_colurdc_data' );
+
+add_action('rss2_item', function(){
+  global $post;
+
+  $output = '';
+  $thumbnail_ID = get_post_thumbnail_id( $post->ID );
+  $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'featured');
+  $output .= '<thumbnail>' . $thumbnail[0] . '</thumbnail>';
+
+  echo $output;
+});
