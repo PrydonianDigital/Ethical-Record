@@ -89,6 +89,37 @@ function the_post_thumbnail_caption() {
 	}
 }
 
+function er_post_tax() {
+	$labels = array(
+		'name'                       => _x( 'Sections', 'Taxonomy General Name', 'er' ),
+		'singular_name'              => _x( 'Section', 'Taxonomy Singular Name', 'er' ),
+		'menu_name'                  => __( 'Sections', 'er' ),
+		'all_items'                  => __( 'All Sections', 'er' ),
+		'parent_item'                => __( 'Parent Section', 'er' ),
+		'parent_item_colon'          => __( 'Parent Section:', 'er' ),
+		'new_item_name'              => __( 'New Section', 'er' ),
+		'add_new_item'               => __( 'Add New Section', 'er' ),
+		'edit_item'                  => __( 'Edit Section', 'er' ),
+		'update_item'                => __( 'Update Section', 'er' ),
+		'separate_items_with_commas' => __( 'Separate items with commas', 'er' ),
+		'search_items'               => __( 'Search Sections', 'er' ),
+		'add_or_remove_items'        => __( 'Add or remove items', 'er' ),
+		'choose_from_most_used'      => __( 'Choose from the most used items', 'er' ),
+		'not_found'                  => __( 'Not Found', 'er' ),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => true,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+	);
+	register_taxonomy( 'section', array( 'ethicalrecord' ), $args );
+}
+add_action( 'init', 'er_post_tax', 0 );
+
 function er_tax() {
 	$labels = array(
 		'name'                       => _x( 'Taxonomies', 'Taxonomy General Name', 'er' ),
@@ -116,7 +147,7 @@ function er_tax() {
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
 	);
-	register_taxonomy( 'taxonomy', array( 'post' ), $args );
+	register_taxonomy( 'taxonomy', array( 'ethicalrecord' ), $args );
 }
 add_action( 'init', 'er_tax', 0 );
 
@@ -134,6 +165,46 @@ function er_taxonomy_post_class( $classes, $class, $ID ) {
     }
     return $classes;
 } 
+
+function er_posts() {
+	$labels = array(
+		'name'                => _x( 'ER Posts', 'Post Type General Name', 'er' ),
+		'singular_name'       => _x( 'ER Post', 'Post Type Singular Name', 'er' ),
+		'menu_name'           => __( 'ER Posts', 'er' ),
+		'parent_item_colon'   => __( 'Parent ER Post:', 'er' ),
+		'all_items'           => __( 'All ER Posts', 'er' ),
+		'view_item'           => __( 'View ER Post', 'er' ),
+		'add_new_item'        => __( 'Add New ER Post', 'er' ),
+		'add_new'             => __( 'Add New', 'er' ),
+		'edit_item'           => __( 'Edit ER Post', 'er' ),
+		'update_item'         => __( 'Update ER Post', 'er' ),
+		'search_items'        => __( 'Search ER Posts', 'er' ),
+		'not_found'           => __( 'Not found', 'er' ),
+		'not_found_in_trash'  => __( 'Not found in Trash', 'er' ),
+	);
+	$args = array(
+		'label'               => __( 'ethicalrecord', 'er' ),
+		'description'         => __( 'Ethical Record Posts', 'er' ),
+		'labels'              => $labels,
+		'supports'            => array( 'title', 'editor', 'post_tag', 'tags', 'thumbnail'),
+		'taxonomies'          => array( 'post_tag', 'tags' ),
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'show_in_nav_menus'   => true,
+		'show_in_admin_bar'   => true,
+		'menu_position'       => 5,
+		'menu_icon'           => '',
+		'can_export'          => true,
+		'has_archive'         => true,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'page',
+	);
+	register_post_type( 'ethicalrecord', $args );
+}
+add_action( 'init', 'er_posts', 0 );
 
 function speaker() {
 	$labels = array(
@@ -219,7 +290,7 @@ function lectureSpeaker() {
     p2p_register_connection_type( array(
         'name' => 'lectures2speakers',
         'from' => 'speaker',
-        'to' => 'post'
+        'to' => 'ethicalrecord'
 	) );
 }
 add_action( 'p2p_init', 'lectureSpeaker' );
@@ -228,7 +299,7 @@ function issuePost() {
     p2p_register_connection_type( array(
         'name' => 'issue2post',
         'from' => 'issue',
-        'to' => 'post'
+        'to' => 'ethicalrecord'
     ) );
 }
 add_action( 'p2p_init', 'issuePost' );
@@ -238,7 +309,7 @@ function extra_info( $meta_boxes ) {
 	$meta_boxes[] = array(
 		'id' => 'meta',
 		'title' => 'Meta Info',
-		'pages' => array('post'), 
+		'pages' => array('ethicalrecord'), 
 		'context' => 'normal',
 		'priority' => 'default',
 		'show_names' => true,
@@ -949,7 +1020,7 @@ class er_Image_Widget extends WP_Widget {
 			<p><label for="' . $this->get_field_id( 'img_title' ) . '">' .  esc_html__( 'Image title:', 'er' ) . ' <a href="http://support.wordpress.com/widgets/image-widget/#image-widget-title" target="_blank">( ? )</a>
 			<input class="widefat" id="' . $this->get_field_id( 'img_title' ) . '" name="' . $this->get_field_name( 'img_title' ) . '" type="text" value="' . $img_title . '" />
 			</label></p>
-			<p><label for="' . $this->get_field_id( 'caption' ) . '">' . esc_html__( 'Caption:', 'er' ) . ' <a href="http://support.wordpress.com/widgets/image-widget/#image-widget-caption" target="_blank">( ? )</a>
+			<p><label for="' . $this->get_field_id( '_caption' ) . '">' . esc_html__( 'Caption:', 'er' ) . ' <a href="http://support.wordpress.com/widgets/image-widget/#image-widget-caption" target="_blank">( ? )</a>
 			<textarea class="widefat" id="' . $this->get_field_id( 'caption' ) . '" name="' . $this->get_field_name( 'caption' ) . '" rows="2" cols="20">' . $caption . '</textarea> 
 			</label></p>';
 		$alignments = array(
@@ -1052,6 +1123,9 @@ echo '<style>
 #adminmenu .menu-icon-contacts div.wp-menu-image:before {
 	content: "\f336";
 }
+#adminmenu .menu-icon-ethicalrecord div.wp-menu-image:before {
+	content: "\f464";
+}
 #dashboard_right_now .speaker-count a:before {
     content: "\f488";
 }
@@ -1063,6 +1137,9 @@ echo '<style>
 }
 #dashboard_right_now .feedback-count a:before {
     content: "\f466";
+}
+#dashboard_right_now .ethicalrecord-count a:before {
+    content: "\f464";
 }
 </style>';
 

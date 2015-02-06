@@ -33,6 +33,7 @@
     			<h6 class="entry-date">Lecture date: <?php global $post; $date = get_post_meta( $post->ID, '_cmb_lecdate', true ); echo date('D, jS M, Y', strtotime($date))  ?></h6>
     		<?php endif; ?>
 			<?php } ?>
+
     		<?php
 				if ( function_exists( 'sharing_display' ) ) {
 				    sharing_display( '', true );
@@ -95,6 +96,7 @@
     			wp_reset_postdata();
     			}				
     		?>
+
 			<?php
 				if ( function_exists( 'sharing_display' ) ) {
 				    sharing_display( '', true );
@@ -166,7 +168,7 @@
 
 		<div class="three columns side">
 		
-			<?php if(has_term(array('talks-lectures', 'the-vaults'))) { ?>
+			<?php if(has_term('talks-lectures', 'section')) { ?>
 			<div class="row">
 			
 				<?php
@@ -193,7 +195,10 @@
 								<p><?php the_post_thumbnail('speaker'); ?><br/><small><?php the_post_thumbnail_caption(); ?></small></p>
 							<?php } ?>
 						</div>
-						<?php the_content(); ?>
+						<p><?php
+							$content = get_the_content();
+							print $content;
+						?></p>
 						
 					</div>
 					

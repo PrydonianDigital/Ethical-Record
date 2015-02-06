@@ -11,16 +11,16 @@
 					<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('featured'); ?></a>
 					<small><?php the_post_thumbnail_caption(); ?></small>
 				<?php } ?>
-				<?php if(in_category('lectures')) { ?>
+				<?php if(has_term('talks-lectures','section')) { ?>
 		    		<h5>Lecture</h5>
 		    	<?php } ?>
-				<?php if(in_category('notices')) { ?>
+				<?php if(has_term('notices','section')) { ?>
 		    		<h5>Notices</h5>
 		    	<?php } ?>
-		    	<?php if(in_category('book-reviews')) { ?>
+		    	<?php if(has_term('book-reviews','section')) { ?>
 		    		<h5>Book Review</h5>
 		    	<?php } ?>
-		    	<?php if(in_category('videos')) { ?>
+		    	<?php if(has_term('videos','section')) { ?>
 		    		<h5>Video</h5>
 		    	<?php } ?>
 				<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
@@ -29,7 +29,7 @@
     			<?php global $post; $date = get_post_meta( $post->ID, '_cmb_lecdate', true ); if( $date != '' ) :  ?>
     				<h6>Lecture date: <?php global $post; $date = get_post_meta( $post->ID, '_cmb_lecdate', true ); echo date('D, jS M, Y', strtotime($date))  ?></h6>
     			<?php endif; ?>
-    			<?php if(in_category('lectures')) { ?>
+    			<?php if(has_term('talks-lectures','section')) { ?>
     				<h6><?php post_read_time(); ?></h6>
     				<?php global $post; $abstract = get_post_meta( $post->ID, '_cmb_abstract', true ); if( $abstract != '' ) :  ?>
     					<p><?php global $post; $abstract = get_post_meta( $post->ID, '_cmb_abstract', true ); echo $abstract;  ?> ...<a href="<?php the_permalink(); ?>">Read More &raquo;</a></p>
@@ -53,7 +53,7 @@
 						}
 						wp_reset_postdata();				
 					?>
-    			<?php } elseif (in_category('book_reviews')) { ?>
+    			<?php } elseif (has_term('book_reviews')) { ?>
     				<h6><?php post_read_time(); ?></h6>
     				<?php global $post; $author = get_post_meta( $post->ID, '_cmb_author', true ); if( $author != '' ) :  ?>
     					<p>By: <strong><?php global $post; $publisher = get_post_meta( $post->ID, '_cmb_author', true ); echo $publisher;  ?></strong> 

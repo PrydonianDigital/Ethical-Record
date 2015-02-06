@@ -16,11 +16,11 @@
 		    			
 		    			<h6><?php the_time( 'l, jS M, Y' ); ?> at <?php the_time('g:i a'); ?></h6>
 		    			<h6><?php post_read_time(); ?></h6>
-		    			<?php if(in_category('lectures')) { ?>
+		    			<?php if(has_term('talks-lectures','section')) { ?>
 		    				<?php global $post; $abstract = get_post_meta( $post->ID, '_cmb_abstract', true ); if( $abstract != '' ) :  ?>
 		    					<p><?php global $post; $abstract = get_post_meta( $post->ID, '_cmb_abstract', true ); echo $abstract;  ?>..<a href="<?php the_permalink(); ?>">Read More &raquo;</a></p>
 		    				<?php endif; ?>
-		    			<?php } elseif (in_category('book-reviews')) { ?>
+		    			<?php } elseif (has_term('book-reviews','section')) { ?>
 		    				<?php global $post; $author = get_post_meta( $post->ID, '_cmb_author', true ); if( $author != '' ) :  ?>
 		    					<p>By: <strong><?php global $post; $publisher = get_post_meta( $post->ID, '_cmb_author', true ); echo $publisher;  ?></strong> 
 		    					<?php global $post; $author = get_post_meta( $post->ID, '_cmb_publisher', true ); if( $author != '' ) :  ?>

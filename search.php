@@ -20,16 +20,16 @@
 							</div>
 							<div class="eight columns">
 								<h5>
-									<?php if(in_category('lectures')) { ?>
+									<?php if(has_term('talks-lectures','section')) { ?>
 									<i class="icon-comment"></i><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 									<?php } ?>
-									<?php if(in_category('notices')) { ?>
+									<?php if(has_term('notices','section')) { ?>
 									<i class="icon-info"></i><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 									<?php } ?>
-									<?php if(in_category('book-reviews')) { ?>
+									<?php if(has_term('book-reviews','section')) { ?>
 									<i class="icon-book"></i><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 									<?php } ?>
-									<?php if(in_category('videos')) { ?>
+									<?php if(has_term('videos','section')) { ?>
 									<i class="icon-video"></i><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 									<?php } ?>
 									<?php if('speaker' == get_post_type()) { ?>
@@ -39,7 +39,7 @@
 									<i class="icon-book-open"></i><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 									<?php } ?>
 								</h5>
-								<?php if(in_category('lectures')) { ?>
+								<?php if(has_term('talks-lectures','section')) { ?>
 	    							<h6><?php post_read_time(); ?></h6>
 					    			<h6>Posted on: <?php the_time( 'D, jS M, Y' ); ?></h6>
 					    			<?php global $post; $date = get_post_meta( $post->ID, '_cmb_lecdate', true ); if( $date != '' ) :  ?>
@@ -65,12 +65,12 @@
 										wp_reset_postdata();				
 									?>
     							<?php } ?>
-								<?php if(in_category('notices')) { ?>
+								<?php if(has_term('notices','section')) { ?>
 	    							<h6><?php post_read_time(); ?></h6>
 					    			<h6>Posted on: <?php the_time( 'D, jS M, Y' ); ?></h6>
 					    			<?php the_excerpt(); ?>
 					    		<?php } ?>	
-								<?php if(in_category('book-reviews')) { ?>
+								<?php if(has_term('book-reviews','section')) { ?>
 	    							<h6><?php post_read_time(); ?></h6>
 					    			<h6>Posted on: <?php the_time( 'D, jS M, Y' ); ?></h6>
 				    				<?php global $post; $author = get_post_meta( $post->ID, '_cmb_author', true ); if( $author != '' ) :  ?>
@@ -139,16 +139,16 @@
 						<div class="row">
 							<div class="twelve columns">
 								<h5>
-									<?php if(in_category('lectures')) { ?>
+									<?php if(has_term('talks-lectures','section')) { ?>
 									<i class="icon-comment"></i><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 									<?php } ?>
-									<?php if(in_category('notices')) { ?>
+									<?php if(has_term('notices','section')) { ?>
 									<i class="icon-info"></i><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 									<?php } ?>
-									<?php if(in_category('book-reviews')) { ?>
+									<?php if(has_term('book-reviews','section')) { ?>
 									<i class="icon-book"></i><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 									<?php } ?>
-									<?php if(in_category('videos')) { ?>
+									<?php if(has_term('videos','section')) { ?>
 									<i class="icon-video"></i><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 									<?php } ?>
 									<?php if('speaker' == get_post_type()) { ?>
@@ -161,7 +161,7 @@
 	 							<?php if(is_page()) { ?>
 									<?php the_excerpt(); ?>
     							<?php } ?>
-								<?php if(in_category('lectures')) { ?>
+								<?php if(has_term('talks-lectures','section')) { ?>
 	    							<h6><?php post_read_time(); ?></h6>
 					    			<h6>Posted on: <?php the_time( 'D, jS M, Y' ); ?></h6>
 					    			<?php global $post; $date = get_post_meta( $post->ID, '_cmb_lecdate', true ); if( $date != '' ) :  ?>
@@ -187,12 +187,12 @@
 										wp_reset_postdata();				
 									?>
     							<?php } ?>
-								<?php if(in_category('notices')) { ?>
+								<?php if(has_term('notices','section')) { ?>
 	    							<h6><?php post_read_time(); ?></h6>
 					    			<h6>Posted on: <?php the_time( 'D, jS M, Y' ); ?></h6>
 					    			<?php the_excerpt(); ?>
 					    		<?php } ?>	
-								<?php if(in_category('book-reviews')) { ?>
+								<?php if(has_term('book-reviews','section')) { ?>
 	    							<h6><?php post_read_time(); ?></h6>
 					    			<h6>Posted on: <?php the_time( 'D, jS M, Y' ); ?></h6>
 				    				<?php global $post; $author = get_post_meta( $post->ID, '_cmb_author', true ); if( $author != '' ) :  ?>
@@ -206,7 +206,7 @@
 				    					<?php endif; ?>
 				    				<?php endif; ?>					    			
     							<?php } ?>	
-								<?php if(in_category('videos')) { ?>
+								<?php if(has_term('videos','section')) { ?>
 					    			<h6>Posted on: <?php the_time( 'D, jS M, Y' ); ?></h6>			    			
     							<?php } ?>	
     							<?php if('speaker' == get_post_type()) { ?>	

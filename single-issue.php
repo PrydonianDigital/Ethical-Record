@@ -29,13 +29,13 @@
 					
 					<?php } ?>
 					<h4>
-						<?php if(in_category('lectures')) { ?>
+						<?php if(has_term('talks-lectures','section')) { ?>
 						<i class="icon-comment"></i>
 						<?php } ?>
-						<?php if(in_category('book-reviews')) { ?>
+						<?php if(has_term('book-reviews','section')) { ?>
 						<i class="icon-book"></i>
 						<?php } ?>
-						<?php if(in_category('videos')) { ?>
+						<?php if(has_term('videos','section')) { ?>
 						<i class="icon-video"></i>
 						<?php } ?>						
 					<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>

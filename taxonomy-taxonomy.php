@@ -18,7 +18,7 @@
 		    			<?php global $post; $date = get_post_meta( $post->ID, '_cmb_lecdate', true ); if( $date != '' ) :  ?>
 		    				<h6>Lecture date: <?php global $post; $date = get_post_meta( $post->ID, '_cmb_lecdate', true ); echo date('D, jS M, Y', strtotime($date))  ?></h6>
 		    			<?php endif; ?>
-		    			<?php if(in_category('lectures')) { ?>
+		    			<?php if(has_term('talks-lectures','section')) { ?>
 		    			<h6><?php post_read_time(); ?></h6>
 		    				<?php global $post; $abstract = get_post_meta( $post->ID, '_cmb_abstract', true ); if( $abstract != '' ) :  ?>
 		    					<p><?php global $post; $abstract = get_post_meta( $post->ID, '_cmb_abstract', true ); echo $abstract;  ?>..<a href="<?php the_permalink(); ?>">Read More &raquo;</a></p>
@@ -42,7 +42,7 @@
 									wp_reset_postdata();				
 								?>
 		    				<?php endif; ?>
-		    			<?php } elseif (in_category('book-reviews')) { ?>
+		    			<?php } elseif (has_term('book-reviews','section')) { ?>
 		    			<h6><?php post_read_time(); ?></h6>
 		    				<?php global $post; $author = get_post_meta( $post->ID, '_cmb_author', true ); if( $author != '' ) :  ?>
 		    					<p>By: <strong><?php global $post; $publisher = get_post_meta( $post->ID, '_cmb_author', true ); echo $publisher;  ?></strong> 
@@ -55,7 +55,7 @@
 		    					<?php endif; ?>
 		    					<?php the_excerpt(); ?>
 		    				<?php endif; ?>
-		    			<?php } elseif (in_category('videos')) { ?>
+		    			<?php } elseif (has_term('videos','section')) { ?>
 							<?php global $post; $video = get_post_meta( $post->ID, '_cmb_video', true ); if( $video != '' ) :  ?>
 								<?php echo apply_filters( 'the_content', get_post_meta( get_the_ID(), $prefix . '_cmb_video', true ) );  ?>
 							<?php endif; ?>	

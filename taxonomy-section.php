@@ -3,9 +3,10 @@
 	<div class="row">
 	
 		<div class="nine columns">
-			<h2>Lectures<div class="alignright"><a href="feed/"><i class="icon-rss"></i></a></div></h2>
-			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-		
+			<?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'section' ) ); ?>
+			<?php if (have_posts()) : ?>
+			<h2 class="<?php echo get_queried_object()->slug; ?>"><?php echo get_queried_object()->name; ?><div class="alignright"><a href="feed/"><i class="icon-rss"></i></a></div></h2>
+			<?php while (have_posts()) : the_post(); ?>
 			<div class="row article">
 			
 				<div <?php post_class('twelve columns'); ?>>
@@ -17,8 +18,8 @@
 		    			<?php global $post; $date = get_post_meta( $post->ID, '_cmb_lecdate', true ); if( $date != '' ) :  ?>
 		    				<h6>Lecture date: <?php global $post; $date = get_post_meta( $post->ID, '_cmb_lecdate', true ); echo date('D, jS M, Y', strtotime($date))  ?></h6>
 		    			<?php endif; ?>
-		    			<h6><?php post_read_time(); ?></h6>
 		    			<?php if(has_term('talks-lectures','section')) { ?>
+		    			<h6><?php post_read_time(); ?></h6>
 		    				<?php global $post; $abstract = get_post_meta( $post->ID, '_cmb_abstract', true ); if( $abstract != '' ) :  ?>
 		    					<p><?php global $post; $abstract = get_post_meta( $post->ID, '_cmb_abstract', true ); echo $abstract;  ?>..<a href="<?php the_permalink(); ?>">Read More &raquo;</a></p>
 								<?php
@@ -42,15 +43,22 @@
 								?>
 		    				<?php endif; ?>
 		    			<?php } elseif (has_term('book-reviews','section')) { ?>
+		    			<h6><?php post_read_time(); ?></h6>
 		    				<?php global $post; $author = get_post_meta( $post->ID, '_cmb_author', true ); if( $author != '' ) :  ?>
 		    					<p>By: <strong><?php global $post; $publisher = get_post_meta( $post->ID, '_cmb_author', true ); echo $publisher;  ?></strong> 
 		    					<?php global $post; $author = get_post_meta( $post->ID, '_cmb_publisher', true ); if( $author != '' ) :  ?>
 		    						(<?php global $post; $publisher = get_post_meta( $post->ID, '_cmb_publisher', true ); echo $publisher;  ?>)
 		    					<?php endif; ?>
 		    					</p>
-		    					<p>Review by: <?php the_author(); ?></p>
+		    					<?php global $post; $reviewer = get_post_meta( $post->ID, '_cmb_vpauthor', true ); if( $reviewer != '' ) :  ?>
+		    						<p>Review by: <?php global $post; $reviewer = get_post_meta( $post->ID, '_cmb_vpauthor', true ); echo $reviewer;  ?></p>
+		    					<?php endif; ?>
 		    					<?php the_excerpt(); ?>
 		    				<?php endif; ?>
+		    			<?php } elseif (has_term('videos','section')) { ?>
+							<?php global $post; $video = get_post_meta( $post->ID, '_cmb_video', true ); if( $video != '' ) :  ?>
+								<?php echo apply_filters( 'the_content', get_post_meta( get_the_ID(), $prefix . '_cmb_video', true ) );  ?>
+							<?php endif; ?>	
 		    			<?php } ?>
 				</div>
 				
@@ -61,7 +69,7 @@
 				<?php wp_pagenavi(); ?>			
 			</div>				
 				<?php else : ?>
-				<h4>Sorry, no Lectures have been published yet.</h4>
+				<h2>Sorry, no posts are tagged under <?php echo get_queried_object()->name; ?>.</h2>	
 				<?php endif; ?>			
 			
 			

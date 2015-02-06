@@ -6,9 +6,16 @@
 		<?php
 		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 		$args = array (
+			'post_type' => 'ethicalrecord',
 			'posts_per_page' => 5,
 			'post__in'=>get_option('sticky_posts'),
-			'category_name' => 'lectures,book-reviews',
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'section',
+					'field' => 'slug',
+					'terms' => array('talks-lectures', 'book-reviews')
+				),
+			),
 			'paged' => $paged
 		);
 		$featured = new WP_Query( $args );
@@ -20,10 +27,10 @@
 					<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('featured'); ?></a>
 					<small><?php the_post_thumbnail_caption(); ?></small>
 				<?php } ?>
-				<?php if(in_category('lectures')) { ?>
+				<?php if(has_term('talks-lectures','section')) { ?>
 		    		<h5>Lecture</h5>
 		    	<?php } ?>
-		    	<?php if(in_category('book-reviews')) { ?>
+		    	<?php if(has_term('book-reviews','section')) { ?>
 		    		<h5>Book Review</h5>
 		    	<?php } ?>
 				<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
@@ -33,7 +40,7 @@
     				<h6>Lecture date: <?php global $post; $date = get_post_meta( $post->ID, '_cmb_lecdate', true ); echo date('D, jS M, Y', strtotime($date))  ?></h6>
     			<?php endif; ?>
     			<h6><?php post_read_time(); ?></h6>
-    			<?php if(in_category('lectures')) { ?>
+    			<?php if(has_term('talks-lectures','section')) { ?>
     				<?php global $post; $abstract = get_post_meta( $post->ID, '_cmb_abstract', true ); if( $abstract != '' ) :  ?>
     					<p><?php global $post; $abstract = get_post_meta( $post->ID, '_cmb_abstract', true ); echo $abstract;  ?> ...<a href="<?php the_permalink(); ?>">Read More &raquo;</a></p>
     				<?php endif; ?>
@@ -56,7 +63,7 @@
 						}
 						wp_reset_postdata();				
 					?>
-    			<?php } elseif (in_category('book_reviews')) { ?>
+    			<?php } elseif (has_term('book_reviews')) { ?>
     				<?php global $post; $author = get_post_meta( $post->ID, '_cmb_author', true ); if( $author != '' ) :  ?>
     					<p>By: <strong><?php global $post; $publisher = get_post_meta( $post->ID, '_cmb_author', true ); echo $publisher;  ?></strong> 
     					<?php global $post; $author = get_post_meta( $post->ID, '_cmb_publisher', true ); if( $author != '' ) :  ?>
@@ -81,6 +88,7 @@
 				<?php
 				$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 				$args = array (
+					'post_type' => 'ethicalrecord',
 					'ignore_sticky_posts' => 1,
 					'post__not_in'=>get_option('sticky_posts'),
 					'category_name' => 'lectures,book-reviews',
@@ -93,10 +101,10 @@
 					<div <?php post_class('twelve columns'); ?>>
 					<?php $terms = get_the_terms( $post->ID, 'taxonomy' ); ?>
 					<div class="<?php foreach( $terms as $term ) echo ' ' . $term->slug; ?>">
-		    			<?php if(in_category('lectures')) { ?>
+		    			<?php if(has_term('talks-lectures','section')) { ?>
 		    			<h5>Lecture</h5>
 		    			<?php } ?>
-		    			<?php if(in_category('book-reviews')) { ?>
+		    			<?php if(has_term('book-reviews','section')) { ?>
 		    			<h5>Book Review</h5>
 		    			<?php } ?>
 						<?php if ( has_post_thumbnail() ) { ?>
@@ -110,7 +118,7 @@
 		    				<h6>Lecture date: <?php global $post; $date = get_post_meta( $post->ID, '_cmb_lecdate', true ); echo date('D, jS M, Y', strtotime($date))  ?></h6>
 		    			<?php endif; ?>
 		    			<h6><?php post_read_time(); ?></h6>
-		    			<?php if(in_category('lectures')) { ?>
+		    			<?php if(has_term('talks-lectures','section')) { ?>
 		    				<?php global $post; $abstract = get_post_meta( $post->ID, '_cmb_abstract', true ); if( $abstract != '' ) :  ?>
 		    					<p><?php global $post; $abstract = get_post_meta( $post->ID, '_cmb_abstract', true ); echo $abstract;  ?>..<a href="<?php the_permalink(); ?>">Read More &raquo;</a></p>
 								<?php
@@ -133,7 +141,7 @@
 									wp_reset_postdata();				
 								?>
 		    				<?php endif; ?>
-		    			<?php } elseif (in_category('book-reviews')) { ?>
+		    			<?php } elseif (has_term('book-reviews','section')) { ?>
 		    				<?php global $post; $author = get_post_meta( $post->ID, '_cmb_author', true ); if( $author != '' ) :  ?>
 		    					<p>By: <strong><?php global $post; $publisher = get_post_meta( $post->ID, '_cmb_author', true ); echo $publisher;  ?></strong> 
 		    					<?php global $post; $author = get_post_meta( $post->ID, '_cmb_publisher', true ); if( $author != '' ) :  ?>
@@ -161,6 +169,7 @@
 				<?php
 				$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 				$args = array (
+					'post_type' => 'ethicalrecord',
 					'ignore_sticky_posts' => 1,
 					'post__not_in'=>get_option('sticky_posts'),
 					'category_name' => 'videos',
@@ -172,7 +181,7 @@
 				<?php if ( $loop->have_posts() ) :  while ( $loop->have_posts() ) : $loop->the_post(); ?>			
 				<div class="row article">
 					<div <?php post_class('twelve columns'); ?>>
-		    			<?php if(in_category('videos')) { ?>
+		    			<?php if(has_term('videos','section')) { ?>
 		    			<h5>Video</h5>
 		    			<?php } ?>
 						<h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
