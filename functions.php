@@ -186,7 +186,7 @@ function er_posts() {
 		'label'               => __( 'ethicalrecord', 'er' ),
 		'description'         => __( 'Ethical Record Posts', 'er' ),
 		'labels'              => $labels,
-		'supports'            => array( 'title', 'editor', 'post_tag', 'tags', 'thumbnail'),
+		'supports'            => array( 'title', 'editor', 'post_tag', 'tags', 'thumbnail', 'comments'),
 		'taxonomies'          => array( 'post_tag', 'tags' ),
 		'hierarchical'        => false,
 		'public'              => true,
